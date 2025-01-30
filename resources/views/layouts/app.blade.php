@@ -136,33 +136,35 @@
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="{{ route('home') }}" class="logo">ReciclaYa</a>
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="{{ route('home') }}">Dashboard</a></li>
-                @auth
-                    <li><a href="{{ route('oferta.index') }}">Ofertas</a></li>
-                    <li>
-                        <a href="{{ route('profile.edit') }}" class="navbar-logout" style="background-color: rgb(94, 179, 114);">Editar Perfil</a>
-                    </li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="navbar-logout">Cerrar sesión</button>
-                        </form>
-                    </li>
-                @else
-                    @if (!request()->is('login') && !request()->is('register'))
-                        <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
-                    @endif
-                @endauth
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="{{ route('home') }}" class="logo">ReciclaYa</a>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="{{ route('home') }}">Dashboard</a></li>
+            @auth
+                <li><a href="{{ route('oferta.index') }}">Ofertas</a></li>
+                <li>
+                    <a href="{{ route('profile.edit') }}" class="navbar-logout" style="background-color: rgb(94, 179, 114);">Editar Perfil</a>
+                </li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="navbar-logout">Cerrar sesión</button>
+                    </form>
+                </li>
+            @else
+                @if (!request()->is('login') && !request()->is('register'))
+                    <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
+                @endif
+            @endauth
+            <!-- Botón para ingresar al login del administrador -->
+            <li><a href="{{ route('admin.login') }}" class="btn btn-warning">Modo Administrador</a></li>
+        </ul>
+    </div>
+</nav>
 
     <!-- Contenido de la vista -->
     <div class="main-content">

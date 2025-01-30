@@ -36,4 +36,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(HistorialOferta::class, 'recolector_id');
     }
+
+    // Método para verificar si el usuario es administrador
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }
